@@ -1,0 +1,353 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --neon-blue: #00f3ff;
+    --cyber-purple: #bc13fe;
+    --matrix-green: #00ff9d;
+    --dark-bg: #0a0a0f;
+    --hologram-gradient: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: var(--dark-bg);
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header con efecto neón */
+.header {
+    background: rgba(10, 10, 15, 0.95);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+    position: relative;
+}
+
+.logo {
+    background: var(--hologram-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--hologram-gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover::after {
+    transform: scaleX(1);
+}
+
+.nav {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--matrix-green);
+    transition: width 0.3s ease;
+}
+
+.nav a:hover {
+    color: var(--matrix-green);
+}
+
+.nav a:hover::before {
+    width: 100%;
+}
+
+/* Hero Section con efecto holográfico */
+.hero {
+    background: radial-gradient(circle at 50% 50%, rgba(11, 22, 55, 0.9), rgba(0, 0, 0, 0.9)),
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1352');
+    background-size: cover;
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 25%,
+        rgba(0, 243, 255, 0.1) 50%,
+        transparent 75%);
+    animation: hologram 6s infinite linear;
+}
+
+@keyframes hologram {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(50%); }
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+    position: relative;
+}
+
+.hero p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+/* Formulario futurista */
+.newsletter-form {
+    margin-top: 3rem;
+    position: relative;
+    display: inline-flex;
+    gap: 1rem;
+}
+
+.newsletter-form input {
+    padding: 1rem 1.5rem;
+    width: 350px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    border-radius: 50px;
+    color: #fff;
+    font-size: 1rem;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border-color: var(--matrix-green);
+    box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+}
+
+.newsletter-form button {
+    padding: 1rem 2.5rem;
+    background: var(--hologram-gradient);
+    border: none;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 243, 255, 0.4);
+}
+
+/* Tarjetas con efecto de cristal */
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 243, 255, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        transparent 20%,
+        rgba(0, 243, 255, 0.1) 50%,
+        transparent 80%);
+    transform: rotate(45deg);
+    animation: cardGlow 6s infinite linear;
+}
+
+@keyframes cardGlow {
+    0% { transform: rotate(45deg) translateX(-50%); }
+    100% { transform: rotate(45deg) translateX(50%); }
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    color: var(--matrix-green);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+.card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+}
+
+/* Trending Section con bordes animados */
+.trending {
+    padding: 4rem 2rem;
+}
+
+.trending h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.trending-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.trending-item {
+    padding: 2rem;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 243, 255, 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.trending-item::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--hologram-gradient);
+    z-index: -1;
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.trending-item:hover::before {
+    opacity: 0.3;
+}
+
+.trending-item h3 {
+    color: var(--neon-blue);
+    margin-bottom: 1rem;
+}
+
+/* Footer con efecto de neón */
+.footer {
+    background: rgba(10, 10, 15, 0.95);
+    padding: 4rem 2rem;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(0, 243, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer h4 {
+    color: var(--matrix-green);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.footer p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .newsletter-form input {
+        width: 100%;
+    }
+    
+    .nav {
+        display: none;
+    }
+}
+
+/* Animaciones adicionales */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
